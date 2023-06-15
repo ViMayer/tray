@@ -1,0 +1,172 @@
+{% set email = Translation('ag_email_1') %}
+{% set whatsappNumber = Translation('ag_telefone_3') %}
+{% set phone = Translation('ag_telefone_1') %}
+{% set phone2 = Translation('ag_telefone_2') %}
+
+<footer class="footer {% if 'home' not in pages.current %} with-border {% endif %}">
+
+    {% if settings.news_active %}
+    <div class="bg-primary flex items-center justify-center py-4">
+        <div class="newsFooterProduct max-w-screen-xl m-auto flex flex-col w-full items-center justify-center py-4 gap-6"> 
+            <div class="infoNewsLetter flex w-full gap-4">
+                <div class="newsLetterText flex items-center text-white uppercase text-xl font-normal">RECEBEA DESCONTOS EXCLUSIVOS, CADASTRE-SE!</div>
+                <form class="newsLetterForm flex gap-4 news-form items-center" action="/mvc/store/newsletter/" method="post">
+                    <input type="hidden" name="loja" value="{{ store.id }}">
+                    <input type="email" class="w-full email-input p-2 bg-white border-b text-black" name="email" placeholder="Digite se Seu e-mail" required spellcheck="false" autocomplete="off">
+                    <button type="submit" class="newsletterButton max-w-[128px] hover:opacity-80 transition-all py-2 px-4 bg-secundary2 text-white text-xl" title="Cadastrar" aria-label="Cadastrar">
+                        <div>Cadastrar</div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="cols">
+        <div class="container flex justify-between f-wrap">
+
+            <div class="box">
+                <div class="title">ATENDIMENTO</div>
+                <div class="overflow">
+                    <ul class="list list-atendimento text-xl txt-gray3"> 
+    
+                        {% if whatsappNumber %}
+                        <li>
+                            {% element 'snippets/whatsapp' { 'number': whatsappNumber, 'include_text' : false } %}
+                        </li>
+                        {% endif %}
+    
+                        {% if phone %}
+                        {% set link = phone | replace({'(': '', ')': '', '-': '', ' ': ''}) %}
+                        <li>
+                            <a href="tel:{{ link }}" title="Telefone: {{ phone }}">
+                                {{ phone }}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if phone2 %}
+                        {% set link = phone2 | replace({'(': '', ')': '', '-': '', ' ': ''}) %}
+                        <li>
+                            <a href="tel:{{ link }}" title="Telefone: {{ phone2 }}">
+                                {{ phone2 }}
+                            </a>
+                        </li>
+                        {% endif %}
+    
+                        {% if email %}
+                        <li>
+                            <a href="mailto:{{ email }}" title="Email: {{ email }}" class="flex gap-2">
+                                {{ email }}
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="pt-4 text-xl">
+                            <p>Horario de atendimento</p>
+                            <p>Segunda a Sexta: 10h às 18h </p>
+                        </li>
+    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="title">INSTITUCIONAL</div>
+                <div class="overflow">
+                    <ul class="list text-xl txt-gray3">
+                        <li>
+                            <a href="/avaliacoes" title="Avaliações dos clientes">Avaliações dos clientes</a>
+                        </li>
+                        <li>
+                            <a href="/loja-fisica" title="Loja Física">Loja Física</a>
+                        </li>
+                        <li>
+                            <a href="/empresa" title="sobre nós">Sobre nós</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="box">
+
+                <div>
+                    <div class="title">Formas de Pagamento</div>
+                    <ul class="flex gap-2 items-center my-2">
+                        <img src="{{ themePath }}img\lunnar\pagamentos.png" class="mb-hidden" alt="" width="270px">
+                        <img src="{{ themePath }}img\lunnar\pagamentos-mobile.jpg" class="dk-hidden" alt="">
+                    </ul>
+                </div>
+
+                <!-- <div class="title">Selos de Seguran&ccedil;a {{ icon }}</div>
+                <ul class="security-seals flex f-wrap">                    
+
+                    <li class="google-seal">
+                        <a href="https://transparencyreport.google.com/safe-browsing/search?url={{ store.url }}" target="_blank" rel="noreferrer noopener" title="Google Safe Browsing">
+                            <span class="icon icon-shield vertical-align"></span>
+                            <span class="icon icon-google vertical-align""></span>
+
+                        </a>
+                    </li>
+
+                    {% if seals.ebit %}
+                        <li class="ebit-seal">
+                            {{ seals.ebit }}
+                        </li>
+                    {% endif %}
+
+                    {% if seals.hackersafe %}
+                        <li class="loja-protegida-seal">
+                            {{ seals.hackersafe }}
+                        </li>
+                    {% endif %}
+
+                </ul> -->
+
+            </div>
+
+            <div class="box flex flex-col justify-between">
+                <div class="mb-4 mb-pt-6 logo">
+                    {% set logoStore = Image('logo_loja') %}
+                    <a class="logo" href="{{ store.url }}" title="{{ store.name }}">
+                        <!-- {% if logoStore %}
+                            {{ logoStore | replace({'src=': 'width="250" height="36" src='}) }}
+                        {% endif %}-->
+                        <img src="{{ themePath }}img\theme\Logo-preto.png" width="250px">
+                    </a>
+                </div>
+                <div class='py-4 flex mb-justify-center'>
+                    <img src="{{ themePath }}img/lunnar/selo-seguranca.png">
+                </div>
+                <div class="flex gap-4 justify-between">
+                    <div class="flex flex-col gap-2">
+                        <div class="txt-gray3">Plataforma:</div>
+                        <img src="{{ themePath }}img/lunnar/tray-logo.png" width="120px">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="txt-gray3">Desenvolvimento:</div>
+                        <img src="{{ themePath }}img/lunnar/logo-lunnar-preto.png" width="140px">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--NÃO DELETAR-->
+    <div class="copy">
+        <div class="container flex align-center flex-column">
+            
+            <div class="text">{{ Translation('ag_mensagem_rodape') }}</div>
+
+            <div class="tray">
+                {% element 'snippets/credits' %}
+                {% if tray.theme_configs.custom_theme_preview %}
+                    <div class="mode-preview">
+                        <a href="/mvc/store/home/reset_opencode_preview?loja={{ store.id }}">Sair modo preview</a>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+</footer>

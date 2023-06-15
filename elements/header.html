@@ -1,0 +1,146 @@
+{% set email = Translation('ag_email_1') %}
+{% set whatsappNumber = Translation('ag_telefone_3') %}
+{% set phone = Translation('ag_telefone_1') %}
+{% set phone2 = Translation('ag_telefone_2') %}
+<div class="topBar bg-primary">
+    <div class="w-full topBarProduct text-center flex justify-between mb-justify-center items-center max-w-screen-xl p-2 m-auto text-base text-white">  
+        <div class="flex gap-1 items-center">
+            <span class="text-base font-bold">TEXTO EXEMPLO</span>
+            <!-- <a class="text-xs">
+                <span class="underline">Faça parte agora!</span>
+            </a> -->
+        </div>
+        <div class="flex gap-2 items-center mb-hidden">
+            <span class="text-base font-bold">RETIRAR NA LOJA</span>
+            <a class="text-xs">
+                <span class="underline">Ver endereço</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<header class="bg-gray">
+
+    <div class="headerBox w-full max-w-screen-xl py-4 m-auto flex items-center justify-between flex-wrap md:flex-nowrap max-w-screen-xl">
+
+        <div class="menuMobile w-20">
+            <img src="{{ themePath }}img\lunnar\menu-mobile.svg" alt="">
+        </div>
+
+        <div class="m-2 logo flex-1">
+            {% set logoStore = Image('logo_loja') %}
+            <a class="logo" href="{{ store.url }}" title="{{ store.name }}">
+
+                <!-- {% if logoStore %}
+                    {{ logoStore | replace({'src=': 'width="222" height="36" src='}) }}
+                {% endif %} -->
+                <img src="{{ themePath }}img\theme\Logo-preto.png" width="220px">
+
+            </a>
+        </div>
+
+        <div class="mt-2 mb-2 search-box search w-full grow">
+            <form class="search-header flex-1 relative flex-row-reverse" action="{{ links.search }}" method="get" data-search="suggestion">
+                <input type="hidden" name="loja" value="{{ store.id }}">
+                <input class="input-search py-2 px-6 placeholder:font-normal rounded flex float-right bg-white rounded" 
+                    placeholder="O que você procura?" spellcheck="false" autocomplete="off" autocorrect="off" data-input="suggestion" type="text"  name="palavra_busca">
+                <button class="button-search text-primary w-[2rem] transition-all hover:opacity-90 absolute right-0">
+                    <img src="{{ themePath }}img\lunnar\search.svg">
+                </button>
+            </form>
+        </div>
+
+        <div class="blockB justify-center">
+
+            <div class="">
+                <div class="myAccount">
+                    <a href="" class="m-1 flex w-fit myAccount-header">
+                        <img src="{{ themePath }}img\lunnar\user-icon.svg" class="m-1 w-[40]"> 
+                    </a>
+                    
+                    <ul class="rounded hidden">
+                        <li class="list list-atendimento text-sm text-black flex flex-col items-start"> 
+                            <span class="tray-hide" data-logged-user="true">
+                                Olá <span data-customer="name"></span>! / 
+                                <b><a class="text-primary" href="{{ links.logout }}">Sair</a></b>
+                            </span>
+                            <span class="tray-hide flex flex-col items-center w-full gap-4" data-logged-user="false">
+                                <button href="{{ links.login }}" class="border-primary border border-solid bg-primary text-white ease-in-out hover:bg-white hover:text-primary rounded px-10 py-2 text-[18px] text-extrabold">ENTRAR</button>
+                                <spam class="flex flex-col items-center">Ainda não tem conta?
+                                    <b><a class="text-semibold" href="{{ links.sign_in }}">Cadastrar</a></b>
+                                </spam>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="cart">
+                <a class="cart-header m-2" href="/loja/carrinho.php?loja=ID_DA_LOJA">
+                    <img class="icon w-[30] md:w-[40]" src="{{ themePath }}img\lunnar\cart.svg">
+                    <span class="number" data-cart="amount"></span>
+                </a>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+</header>
+
+<div class="menuBox">
+
+    <p class="py-4 bg-gray txt-gray4 loginMobile gap-2 items-center font-semibold">
+        <span class="tray-hide" data-logged-user="true">
+            Olá <span data-customer="name"></span>! / 
+            <b><a class="text-primary" href="{{ links.logout }}">Sair</a></b>
+        </span>
+        <span class="tray-hide flex flex-col w-full bg-gray txt-gray4 gap-2" data-logged-user="false">
+            <span class="flex gap-1 px-8">
+                <a class="" href="{{ links.login }}">MINHA CONTA</a>
+                |
+                <a class="" href="{{ links.sign_in }}">CADASTRE-SE</a>
+            </span>
+        </span>
+    </p>
+
+    <div class="main_menu d-none d-md-flex">
+        <div class="m-auto">
+            <div class="wrapper main_menu__body menu-principal">
+                {% element 'snippets/menu' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="boxMenuMobile">
+        {% element 'snippets/menu' %}
+    </div>
+
+    <div class="topBar bg-gray txt-primary dk-hidden">
+        <div class="text-center flex flex-col items-start w-full max-w-screen-xl m-auto p-6">
+            
+            <div class="flex flex-col font-semibold">
+                <a href="" title="Meus pedidos" class="flex text-sm">
+                    Central de atendimento
+                </a>
+                <a href="/perguntas-frequentes" title="Pergunas Frequentes" class="flex text-sm">
+                    Meus pedidos
+                </a>
+                <a href="{{ links.login }}" title="Garantia" class="flex text-sm">
+                    Minha Conta
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="menuMobile btFechar">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </div>
+</div>
+
+
