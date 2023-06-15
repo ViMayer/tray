@@ -1,0 +1,21 @@
+<div class="w-full ">
+    <a
+        class="        finalizarCompraWhats mx-auto  w-full flex items-center justify-center 
+        h-[10rem]"
+        target="_blank" href id="botao-whats">
+        <img class src="{{ themePath }}img\lunnar\icone-whatsapp.svg" />
+        <span class="">
+            Finalizar compra por Whatsapp
+        </span>
+    </a>
+    <a id="pegarNome" class="hidden" href="">{{ product.name }}</a>
+</div>
+
+<script>
+    let currentUrl = window.location.href
+    let idBotao = document.getElementById("botao-whats")
+    let nomeDoProduto = document.getElementById("pegarNome").innerHTML
+    let msg = "Estou com interesse no produto: " + encodeURIComponent(nomeDoProduto) +" " + "(" + currentUrl + ")"
+    let novoHref = "https://api.whatsapp.com/send?phone=5542991659171&text=" + msg
+    idBotao.href = novoHref
+</script>

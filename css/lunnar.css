@@ -891,6 +891,7 @@ footer{
 }
 
 .reguaHome ul li{
+  opacity: 0%;
   padding: 1rem;
 }
 

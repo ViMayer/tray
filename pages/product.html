@@ -13,6 +13,8 @@
 {% element 'snippets/breadcrumb' %}
 {% element 'schema' { 'product' : product } %}
 
+
+
 <div id="product-wrapper" class="product-wrapper">
 
     <div class="product-box">
@@ -265,12 +267,15 @@
                             </ul>
                         </div>
                     {% endif %}
+                    
+                    {% element 'snippets/botao-whats' %} 
 
                     {% if productHelper.bonus() and 'idBonusVariacao' in productHelper.bonus() %}
                         <div class="product-reward">
                             {{ productHelper.bonus() }}
                         </div>
-                    {% endif %}
+                        {% endif %}
+                      
 
                     <div class="actions">
                         <div class="tray-buy-button">
